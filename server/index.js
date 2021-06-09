@@ -23,6 +23,10 @@ mongoose.connect(config.mongoURI, {
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
+app.get('/api/hello', (req, res) => {
+    res.send('Hello!');
+});
+
 app.post('/api/users/register', (req, res) => {
     const user = new User(req.body);
 
@@ -75,7 +79,7 @@ app.get('/api/users/logout', auth, (req, res) => {
     (err, user) => {
         if (err) return res.json({ success: false, err });
         return res.status(200).send({
-            succcess: true
+            success: true
         });
     });
 });
